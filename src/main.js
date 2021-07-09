@@ -2,8 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './router.js'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 import global from './global'
 import filter from './filter'
 import "babel-polyfill"
@@ -14,20 +12,15 @@ import 'fetch-ie8';
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import VueWorker from 'vue-worker'
 import utils from './utils/utils'
-import tinymce from 'tinymce'
-import VueTinymce from '@packy-tang/vue-tinymce'
 
-import s from './utils/swiper'
+import animated from 'animate.css'
+Vue.use(animated)
 
 Vue.use(VueAxios, axios)
 Vue.use(global.install)
 Vue.use(filter)
-Vue.use(VueWorker)
 Vue.use(utils)
-Vue.prototype.$tinymce = tinymce // 将全局tinymce对象指向给Vue作用域下
-Vue.use(VueTinymce)
 
 // var env = process.env.NODE_ENV
 Vue.config.productionTip = false
@@ -71,26 +64,26 @@ axios.interceptors.response.use(function(response) {
                 console.log(data)
                 return
             } else if (!(data.code == 100 || data.code == 200)) {
-                ElementUI.Message({
-                        type: 'error',
-                        message: data.msg || data.message || '出错了'
-                    })
-                    // throw new Error(data.msg || '出错了')
+                // ElementUI.Message({
+                //         type: 'error',
+                //         message: data.msg || data.message || '出错了'
+                //     })
+                // throw new Error(data.msg || '出错了')
             }
         }
         return response.data
     }
 
 }, function(error) {
-    ElementUI.Message({
-        type: 'error',
-        message: error.message
-    })
+    // ElementUI.Message({
+    //     type: 'error',
+    //     message: error.message
+    // })
 })
 
-ElementUI.Dialog.props.closeOnClickModal.default = false
-ElementUI.Dialog.props.closeOnPressEscape.default = false
-ElementUI.Dialog.props.destroyOnClose.default = true
+// ElementUI.Dialog.props.closeOnClickModal.default = false
+// ElementUI.Dialog.props.closeOnPressEscape.default = false
+// ElementUI.Dialog.props.destroyOnClose.default = true
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
     return originalPush.call(this, location).catch(err => err)
@@ -99,7 +92,7 @@ VueRouter.prototype.push = function push(location) {
 axios.defaults.baseURL = process.env.VUE_APP_BASIC_URL
 
 Vue.use(VueRouter)
-Vue.use(ElementUI)
+    // Vue.use(ElementUI)
 
 const router = new VueRouter({
     routes // (缩写) 相当于 routes: routes

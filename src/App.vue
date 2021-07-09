@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <ui></ui>
+    <!-- <ui></ui> -->
     <div class="mainpage">
       <router-view></router-view>
     </div>
@@ -25,7 +25,7 @@ export default {
   },
   components: {
     // HelloWorld,
-    ui
+    // ui
   }
 }
 </script>
@@ -55,7 +55,7 @@ body
   height 100%
   width 100%
   position relative
-  overflow hidden
+  // overflow hidden
 * 
   transition: All .2s ease-in-out
   outline:none;
